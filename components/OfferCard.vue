@@ -1,25 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useExchangeRate } from "#imports";
-
-interface TOfferDetail {
-  name: string;
-  description: string;
-  price: number;
-}
-
-interface TLocale {
-  currency: string;
-  language: string;
-}
-
-interface THotelOffer {
-  name: string;
-  description: string;
-  image: string;
-  locale: TLocale;
-  offers: TOfferDetail[];
-}
+import type { THotelOffer } from "~/server/api/offers";
 
 const props = defineProps<{
   hotelOffer: THotelOffer;

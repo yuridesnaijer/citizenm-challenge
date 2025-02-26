@@ -1,4 +1,27 @@
-export default defineEventHandler((event) => {
+interface TOfferDetail {
+  name: string;
+  description: string;
+  price: number;
+}
+
+interface TLocale {
+  currency: string;
+  language: string;
+}
+
+export interface THotelOffer {
+  name: string;
+  description: string;
+  image: string;
+  locale: TLocale;
+  offers: TOfferDetail[];
+}
+
+interface TOffersResponse {
+  offers: THotelOffer[];
+}
+
+export default defineEventHandler((event): TOffersResponse => {
   return {
     offers: [
       {
