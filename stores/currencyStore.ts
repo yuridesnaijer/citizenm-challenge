@@ -7,7 +7,7 @@ import type {
 export const useCurrencyStore = defineStore(
   "currencyStore",
   () => {
-    const activeCurrency = ref("local");
+    const activeCurrency = useState("active-currency", () => "local");
     const exchangeRateData = ref<TExchangeRatesResponse | null>();
     const selectableCurrencies = computed(() => {
       return [
@@ -19,9 +19,7 @@ export const useCurrencyStore = defineStore(
     });
 
     const fetchExchangeRateData = async () => {
-      const { data } = await useFetch("/api/exchangeRates");
-      exchangeRateData.value = data.value;
-      return data;
+      exchangeRateData.value = await $fetch("/api/exchangeRates");
     };
 
     const updateCurrency = (selectedCurrency: string) => {
@@ -38,7 +36,6 @@ export const useCurrencyStore = defineStore(
   },
   {
     persist: {
-      storage: piniaPluginPersistedstate.localStorage(),
       pick: ["activeCurrency"],
     },
   },

@@ -9,12 +9,7 @@ const availableHotelsAmount = computed(() => offerData.value?.offers.length);
   <section class="offer-container">
     <h1>{{ availableHotelsAmount }} available hotels in Europe</h1>
 
-    <ClientOnly>
-      <CurrencySelector class="offer-container__currency-selector" />
-      <template #fallback>
-        <p>Loading currency data...</p>
-      </template>
-    </ClientOnly>
+    <CurrencySelector class="offer-container__currency-selector" />
 
     <div class="offer-container__offers">
       <OfferCard

@@ -44,10 +44,7 @@ const convertedCurrency = computed(() =>
     <div class="offer-card__price-container">
       rooms available from
       <span class="offer-card__price-container__price">
-        <ClientOnly>
-          {{ convertedCurrency }}
-          <template #fallback> ... </template>
-        </ClientOnly>
+        {{ convertedCurrency }}
       </span>
     </div>
   </div>
